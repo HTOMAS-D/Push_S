@@ -1,18 +1,10 @@
-NAME		= so_long
+NAME		= push_swap
 
 SRCS		= $(wildcard srcs/*.c)
 
 OBJS		= $(SRCS:%.c=%.o)
 
 LIBFTA		= ./libft/libft.a
-
-MLX		= ./mlx/libmlx.a
-
-MLX_FLAGS	= -framework OpenGL -framework AppKit
-
-LINKS		= -L mlx -lmlx -L libft
-
-INCLUDES	= -I mlx -I libft -I .
 
 CC		= gcc# -Wall -Wextra -Werror -g -fsanitize=address
 
@@ -23,12 +15,9 @@ RM		= rm -f
 
 all:		$(NAME)
 
-$(NAME): 	 $(MLX) $(LIBFTA) $(OBJS)
-			$(CC) $(MLX) $(LIBFTA) $(MLX_FLAGS) $(OBJS) -o $(NAME)
+$(NAME):	$(LIBFTA) $(OBJS)
+			$(CC) $(LIBFTA) $(OBJS) -o $(NAME)
 			@echo "$(GREEN)Successfully built --> $(YELLOW)$(NAME)$(DEFAULT)"
-
-$(MLX):
-			make -C mlx
 
 $(LIBFTA):
 			make -C libft
@@ -39,7 +28,6 @@ clean:
 fclean:		clean
 			$(RM) $(NAME)
 			make -C libft fclean
-			make -C mlx clean
 			@echo "$(RED)Files Removed!$(DEFAULT)"
 
 re:			fclean all
