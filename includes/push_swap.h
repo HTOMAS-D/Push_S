@@ -5,7 +5,7 @@
 
 typedef struct s_stack
 {
-	int	numb;	
+	int	nbr;	
 	t_stack *next
 }	t_stack;
 
