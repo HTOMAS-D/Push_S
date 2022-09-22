@@ -1,4 +1,4 @@
-#include "../includes/ft_printf.h"
+#include "../includes/push_swap.h"
 
 int check_each(char *str)
 {
@@ -9,7 +9,7 @@ int check_each(char *str)
     {
         if(!(str[i] >= '0' && str[i] <= '9') && str[i] != '-')
         {
-            ft_printf("ERROR\nThere is a letter somewhere\n")
+            ft_printf("ERROR\nThere is a letter somewhere\n");
             exit(1);
         }
     }
@@ -27,7 +27,7 @@ int check_dup(char **av)
     i = 1;
     while(av[i])
     {
-        j = 1
+        j = 1;
         while(av[j])
         { 
             if(i != j && ft_atoi(av[i]) == ft_atoi(av[j]))
@@ -46,7 +46,7 @@ void    check_args(int ac, char **av)
     i = 1;
     while(i != ac)
         {
-            if(check_each(argv[i]))
+            if(check_each(av[i]))
             { 
                 ft_printf("ERROR\nNumber out of bounds(INT_MIN-INT_MAX)");
                 exit(1);

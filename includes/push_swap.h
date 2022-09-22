@@ -6,7 +6,7 @@
 typedef struct s_stack
 {
 	int	nbr;	
-	t_stack *next
+	struct s_stack *next;
 }	t_stack;
 
 //ERROR.C

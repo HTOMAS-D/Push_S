@@ -6,7 +6,7 @@ OBJS		= $(SRCS:%.c=%.o)
 
 LIBFTA		= ./libft/libft.a
 
-CC		= gcc# -Wall -Wextra -Werror -g -fsanitize=address
+CC		= clang# -Wall -Wextra -Werror -g -fsanitize=address
 
 RM		= rm -f
 
