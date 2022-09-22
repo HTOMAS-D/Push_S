@@ -2,9 +2,8 @@
 
 int	main(int ac, char **av)
 {
-	t_ps	ps;
+	t_stack	*a;
+	t_stack *b;
 
-	if (ac == 1)
-		arg_error(ac);
-	
+	check_args(ac, av);
 }
