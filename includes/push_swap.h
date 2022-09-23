@@ -27,8 +27,14 @@ void	swap_b(t_stack *b);
 void	swap_both(t_stack *a, t_stack *b);
 
 //PUSH.C
-void	push(t_stack *a, t_stack *b);
+static void	push(t_stack *a, t_stack *b);
 void	push_a(t_stack *a, t_stack *b);
 void	push_b(t_stack *a, t_stack *b);
+
+//ROTATE.C
+void	rotate(t_stack *stack);
+void	rotate_a(t_stack *a);
+void	rotate_b(t_stack *b);
+void	rotate_both(t_stack *a, t_stack *b);
 
 #endif
