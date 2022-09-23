@@ -17,4 +17,18 @@ void	check_args(int ac, char **av);
 int	check_each(char *str);
 int	check_dup(int ac, char **av, int i);
 
+//IS_SORTED.C
+int	is_sorted(t_stack *a);
+
+//SWAP.C
+void	swap(t_stack *stack);
+void	swap_a(t_stack *a);
+void	swap_b(t_stack *b);
+void	swap_both(t_stack *a, t_stack *b);
+
+//PUSH.C
+void	push(t_stack *a, t_stack *b);
+void	push_a(t_stack *a, t_stack *b);
+void	push_b(t_stack *a, t_stack *b);
+
 #endif
