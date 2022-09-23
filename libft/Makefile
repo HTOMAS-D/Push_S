@@ -14,7 +14,7 @@ SRCS		=	$(wildcard *.c)
 
 OBJS		= $(SRCS:.c=.o)
 
-CC		= clang
+CC		= gcc
 
 RM		= rm -f
 

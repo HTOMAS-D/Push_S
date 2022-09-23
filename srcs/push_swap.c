@@ -36,8 +36,13 @@ int	main(int ac, char **av)
 	t_stack	*a;
 	t_stack *b;
 
+	b = NULL;
 	check_args(ac, av);
 	a = stack_a(ac, av, 1);
-	while(a->next != NULL)
-		ft_printf("%d", a->nbr);
+	if(is_sorted(a))
+	while(a)
+	{
+		ft_printf("%d\n", a->nbr);
+		a = a->next;
+	}
 }

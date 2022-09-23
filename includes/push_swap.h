@@ -15,6 +15,6 @@ void	arg_error(int ac);
 //CHECK.C
 void	check_args(int ac, char **av);
 int	check_each(char *str);
-int	check_dup(char **av);
+int	check_dup(int ac, char **av, int i);
 
 #endif

@@ -9,9 +9,10 @@ int check_each(char *str)
     {
         if(!(str[i] >= '0' && str[i] <= '9') && str[i] != '-')
         {
-            ft_printf("ERROR\nThere is a letter somewhere\n");
-            exit(1);
+            ft_printf("ERROR\nChar that is not a number\n");
+            exit (1);
         }
+        i++;
     }
     if(ft_atoi(str) > INT_MAX || ft_atoi(str) < INT_MIN)
         return (1);
@@ -19,24 +20,20 @@ int check_each(char *str)
     
 }
 
-int check_dup(char **av)
+int check_dup(int ac, char **av, int i)
 {
-    int i;
     int j;
 
-    i = 1;
-    while(av[i])
+    j = 1;
+    while(j < ac)
     {
-        j = 1;
-        while(av[j])
-        { 
-            if(i != j && ft_atoi(av[i]) == ft_atoi(av[j]))
-                return (1);
-            j++;
+        if(ft_atoi(av[i]) == ft_atoi(av[j]) && i != j)
+        {
+            ft_printf("ERROR\nDuplicate number\n");
+            exit (1);
         }
-        i++;
+        j++;
     }
-    return (0);
 }
 
 void    check_args(int ac, char **av)
@@ -44,17 +41,15 @@ void    check_args(int ac, char **av)
     int i;
 
     i = 1;
+    if(ac == 1)
+        exit(1);
     while(i != ac)
+    {
+        if(check_each(av[i]) || check_dup(ac, av, i))
         {
-            if(check_each(av[i]))
-            { 
-                ft_printf("ERROR\nNumber out of bounds(INT_MIN-INT_MAX)");
-                exit(1);
-            }
+            ft_printf("ERROR\n");
+            exit(1);
         }
-    if(check_dup(av))
-        {
-            ft_printf("ERR0R\nSame value appears twice");
-            exit(2);
-        }
+        i++;
+    }
 }
