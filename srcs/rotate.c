@@ -1,6 +1,6 @@
 #include "../includes/push_swap.h"
 
-static void    rotate (t_stack *stack)
+static void    rotate(t_stack *stack)
 {
     t_stack *temp;
     t_stack *temp2;
