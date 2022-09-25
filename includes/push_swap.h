@@ -37,4 +37,10 @@ void	rotate_a(t_stack *a);
 void	rotate_b(t_stack *b);
 void	rotate_both(t_stack *a, t_stack *b);
 
+//REVROTATE.C
+void   revrotate(t_stack *stack);
+void   revrotate_a(t_stack *a);
+void   revrotate_b(t_stack *b);
+void   revrotate_both(t_stack *a, t_stack *b);
+
 #endif
