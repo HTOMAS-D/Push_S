@@ -1,6 +1,8 @@
-#incldue "../includes/push_swap.h"
+#include "../includes/push_swap.h"
+
+/*static int something(t_stack *a)
 
 void    try_sort(t_stack *a, t_stack *b)
 {
-    if(somethin)
-}
+    if(something_sorted(a))
+}*/

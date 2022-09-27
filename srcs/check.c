@@ -34,6 +34,7 @@ int check_dup(int ac, char **av, int i)
         }
         j++;
     }
+    return (0);
 }
 
 void    check_args(int ac, char **av)

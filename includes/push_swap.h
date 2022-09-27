@@ -19,6 +19,7 @@ int	check_dup(int ac, char **av, int i);
 
 //IS_SORTED.C
 int	is_sorted(t_stack *a);
+void	sort(int ac, t_stack *a, t_stack *b);
 
 //SWAP.C
 void	swap(t_stack *stack);
@@ -32,15 +33,18 @@ void	push_a(t_stack *a, t_stack *b);
 void	push_b(t_stack *a, t_stack *b);
 
 //ROTATE.C
-void	rotate(t_stack *stack);
+static void	rotate(t_stack *stack);
 void	rotate_a(t_stack *a);
 void	rotate_b(t_stack *b);
 void	rotate_both(t_stack *a, t_stack *b);
 
 //REVROTATE.C
-void   revrotate(t_stack *stack);
+static void   revrotate(t_stack *stack);
 void   revrotate_a(t_stack *a);
 void   revrotate_b(t_stack *b);
 void   revrotate_both(t_stack *a, t_stack *b);
+
+//SORT_2.C
+void	sort_2_a(t_stack *a);
 
 #endif
