@@ -11,13 +11,13 @@ void    sort_3_a(t_stack **a)
     t3 = t2->next;
     while (is_sorted(a))
     {
-        if(t->nbr > t2->nbr && t->nbr > t3->nbr 
-            && t2->nbr < t3->nbr)
-            rotate_a(a);
-        else if((t3->nbr < t2->nbr && t3->nbr < t->nbr && t2->nbr < t->nbr) 
+        if((t3->nbr < t2->nbr && t3->nbr < t->nbr && t2->nbr < t->nbr) 
             || (t3->nbr > t2->nbr && t3->nbr > t->nbr)
             || (t->nbr < t2->nbr && t->nbr < t3->nbr))
             swap_a(a);
+        else if(t->nbr > t2->nbr && t->nbr > t3->nbr 
+            && t2->nbr < t3->nbr)
+            rotate_a(a);
         else if(t3->nbr < t2->nbr && t3->nbr < t->nbr)
             revrotate_a(a);
     }
