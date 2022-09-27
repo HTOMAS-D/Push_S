@@ -1,15 +1,17 @@
 #include "../includes/push_swap.h"
 
-void sort(int ac, t_stack *a, t_stack *b)
+void sort(int ac, t_stack **a, t_stack **b)
 {
-    if(ac == 2)
+    if (ac == 2)
         sort_2_a(a);
+    if (ac == 3)
+        sort_3_a(a);
 }
 
-int is_sorted(t_stack *a)
+int is_sorted(t_stack **a)
 {
     t_stack *temp;
-    temp = a;
+    temp = *a;
     while(temp)
     {
         if(temp->next && temp->nbr > temp->next->nbr)
