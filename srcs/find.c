@@ -1,46 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   find_nbr.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/21 14:41:32 by rade-sar          #+#    #+#             */
+/*   Updated: 2022/04/26 11:50:09 by rade-sar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
-int	find_top_range(t_stack *s, int fst, int lst, int med)
+int	find_stack_range(t_stack *s, int first, int last)
 {
-	int i;
-
-	i = 0;
-	while(s)
-	{
-		if(s->nbr >= fst && s->nbr <= lst)
-			return (i);
-		s = s->next;
-		i++;
-	}
-	return (0);
-}
-
-int find_stack_range(t_stack *s, int start, int end)
-{
-	int i;
+	int	i;
 
 	i = 1;
-	while(s)
+	while (s)
 	{
-		if(s->nbr >= start && s->nbr <= end)
+		if (s->nbr >= first && s->nbr <= last)
 			return (i);
-		s = s->next;
 		i++;
+		s = s->next;
 	}
 	return (0);
 }
 
-int find_bot_nbr(t_stack *s, int n, int med)
+int	find_bot_nbr(t_stack *s, int n, int med)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while (s && i < med)
+	while (s && i <= med)
 	{
 		if (s->nbr == n)
 			return (1);
-		s = s->next;
 		i++;
+		s = s->next;
 	}
 	return (0);
+}
+
+int	find_top_range(t_stack *s, int fst, int lst, int med)
+{
+	int	i;
+
+	i = 0;
+	while (s && i <= med)
+	{
+		if (s->nbr >= fst && s->nbr <= lst)
+			return (i);
+		i++;
+		s = s->next;
+	}
+	return (-1);
 }

@@ -1,56 +1,59 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/04 15:21:27 by rade-sar          #+#    #+#             */
+/*   Updated: 2022/04/26 11:50:01 by rade-sar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
-int check_each(char *str)
+static int	check_each(char *arg)
 {
-    int i;
+	int	min;
+	int	max;
 
-    i = 0;
-    while(str[i])
-    {
-        if(!(str[i] >= '0' && str[i] <= '9') && str[i] != '-')
-        {
-            ft_printf("ERROR\nChar that is not a number\n");
-            exit (1);
-        }
-        i++;
-    }
-    if(ft_atoi(str) > INT_MAX || ft_atoi(str) < INT_MIN)
-        return (1);
-    return (0);
-    
+	min = -2147483648;
+	max = 2147483647;
+	if (!ft_strcmp(arg, "0"))
+		return (1);
+	if (ft_atoi(arg) == 0 || ft_atoi(arg) > max || ft_atoi(arg) < min)
+		return (0);
+	return (1);
 }
 
-int check_dup(int ac, char **av, int i)
+static int	check_dup(int ac, char **av, int i, int j)
 {
-    int j;
-
-    j = 1;
-    while(j < ac)
-    {
-        if(ft_atoi(av[i]) == ft_atoi(av[j]) && i != j)
-        {
-            ft_printf("ERROR\nDuplicate number\n");
-            exit (1);
-        }
-        j++;
-    }
-    return (0);
+	while (i != ac)
+	{
+		if (i != j && ft_atoi(av[i]) == ft_atoi(av[j]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
-void    check_args(int ac, char **av)
-{
-    int i;
 
-    i = 1;
-    if(ac == 1)
-        exit(1);
-    while(i != ac)
-    {
-        if(check_each(av[i]) || check_dup(ac, av, i))
-        {
-            ft_printf("ERROR\n");
-            exit(1);
-        }
-        i++;
-    }
+void	check_args(int ac, char **av)
+{
+	int	fst;
+	int	i;
+
+	i = 1;
+	if (ac == 1)
+		exit(0);
+	fst = i;
+	while (i != ac)
+	{
+		if (!check_each(av[i]) || !check_dup(ac, av, fst, i))
+		{
+			write(1, "\033[1;31mError\n[0m", 13);
+			exit(0);
+		}
+		i++;
+	}
 }

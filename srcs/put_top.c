@@ -1,102 +1,103 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   put_at_top.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/21 14:40:51 by rade-sar          #+#    #+#             */
+/*   Updated: 2022/04/26 11:51:10 by rade-sar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
-void	put_top_a(t_stack **a, t_stack **b, int nbr)
+static char	*move_b(t_stack **b, int nbr)
 {
-	int mid;
+	int	med;
 
-	if(get_size(*a) < 2 || (*a)->nbr == nbr)
-		return;
-	mid = get_size(*a) / 2;
-	if(find_bot_nbr(*a, nbr, mid))
-		while((*a)->nbr != nbr)
-			rotate_a(a);
-	else
-		while((*a)->nbr != nbr)
-			revrotate_a(a);
-}
-void	put_top_b(t_stack **b, t_stack **a, int nbr)
-{
-	int mid;
-
-	if(get_size(*b) < 2 || (*b)->nbr == nbr)
-		return;
-	mid = get_size(*b) / 2;
-	if(find_bot_nbr(*b, nbr, mid))
-		while((*b)->nbr != nbr)
-			rotate_b(b);
-	else
-		while((*b)->nbr != nbr)
-			revrotate_b(b);
-}
-
-static char *move_b(t_stack **b, int nbr)
-{
-	int med;
-	
-	printf("ola 1\n");
-	if(get_size(*b) < 2 || (*b)->nbr == nbr)
+	if (get_size(*b) < 2 || (*b)->nbr == nbr)
 		return (NULL);
 	med = get_size(*b) / 2;
-	if(find_bot_nbr(*b, nbr, med))
+	if (find_bot_nbr(*b, nbr, med))
 		return ("rb");
 	return ("rrb");
-
 }
 
-static int	mv_a(t_stack **a, t_stack **b, char *str)
+static int	mv_a(t_stack **a, t_stack **b, t_count *f, char *mv_a)
 {
-	char *mv_b;
+	char	*mv_b;
 
-	printf("ola 1\n");
 	mv_b = move_b(b, get_biggest(*b));
-	printf("ola 1\n");
 	if (!mv_b)
 		return (1);
-	printf("ola 2\n");
-	if(!ft_strcmp(str, "ra") && !ft_strcmp(mv_b, "rb"))
+	if (!ft_strcmp(mv_a, "ra") && !ft_strcmp(mv_b, "rb"))
 	{
-		printf("ola 3\n");
-		rotate_both(a, b);
+		rr(a, b, f);
 		return (0);
 	}
-	if(!ft_strcmp(str, "ra") && !ft_strcmp(mv_b, "rrb"))
+	if (!ft_strcmp(mv_a, "rra") && !ft_strcmp(mv_b, "rrb"))
 	{
-		revrotate_both(a, b);
+		rrr(a, b, f);
 		return (0);
 	}
-	if(!ft_strcmp(mv_b, "rb"))
-		rotate_b(b);
-	if(!ft_strcmp(mv_b, "rrb"))
-		revrotate_b(b);
+	if (!ft_strcmp(mv_b, "rrb"))
+		rrb(b, f);
+	if (!ft_strcmp(mv_b, "rb"))
+		rb(b, f);
 	return (1);
 }
 
-void	put_range_top_a(t_stack **a, t_stack **b, int i[2])
+void	put_range_top_a(t_stack **a, t_stack **b, int v[2], t_count *f)
 {
-	int fst;
-	int med;
-	int lst;
+	int	med;
+	int	fst;
+	int	lst;
 
-	fst = i[0];
-	lst = i[0] + i[1];
-	if(get_size(*a) < 2 || (*a)->nbr >= fst && (*a)->nbr <= lst)
-		return;
+	fst = v[0];
+	lst = v[0] + v[1];
+	if (get_size(*a) < 2
+		|| ((*a)->nbr >= fst && (*a)->nbr <= lst))
+		return ;
 	med = get_size(*a) / 2;
-	if(find_top_range((*a), fst, lst, med))
+	if (find_top_range(*a, fst, lst, med))
 	{
-		while(!((*a)->nbr >= fst && (*a)->nbr <= lst))
-		{	
-			if(mv_a(a, b, "ra"))
-				{
-					printf("ola 5\n");
-					rotate_a(a);
-				}
-		}
+		while (!((*a)->nbr >= fst && (*a)->nbr <= lst))
+			if (mv_a(a, b, f, "ra"))
+				ra(a, f);
 	}
 	else
-		while(!((*a)->nbr >= fst && (*a)->nbr <= lst))
-			printf("ola 6\n");
-			if(mv_a(a, b, "rra"))
-				printf("ola 7\n");
-				revrotate_a(a);
+		while (!((*a)->nbr >= fst && (*a)->nbr <= lst))
+			if (mv_a(a, b, f, "rra"))
+				rra(a, f);
+}
+
+void	put_top_a(t_stack **a, t_stack **b, int nbr, t_count *f)
+{
+	int	med;
+
+	if (get_size(*a) < 2 || (*a)->nbr == nbr)
+		return ;
+	med = get_size(*a) / 2;
+	if (find_bot_nbr(*a, nbr, med))
+		while ((*a)->nbr != nbr)
+			ra(a, f);
+	else
+		while ((*a)->nbr != nbr)
+			rra(a, f);
+}
+
+void	put_top_b(t_stack **a, t_stack **b, int nbr, t_count *f)
+{
+	int	med;
+
+	if (get_size(*b) < 2 || (*b)->nbr == nbr)
+		return ;
+	med = get_size(*b) / 2;
+	if (find_bot_nbr(*b, nbr, med))
+		while ((*b)->nbr != nbr)
+			rb(b, f);
+	else
+		while ((*b)->nbr != nbr)
+			rrb(b, f);
 }

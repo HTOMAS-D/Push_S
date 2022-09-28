@@ -1,34 +1,55 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotate.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/04 15:53:11 by rade-sar          #+#    #+#             */
+/*   Updated: 2022/04/26 11:51:23 by rade-sar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
-static void    rotate(t_stack **stack)
+static void	rotate(t_stack **s)
 {
-    t_stack *temp;
-    t_stack *temp2;
+	t_stack	*first;
+	t_stack	*result;
 
-    temp = *stack;
-    temp2 = (*stack)->next;
-    while((*stack)->next)
-        *stack = (*stack)->next;
-    (*stack)->next = temp;
-    *stack = temp2;
-    temp->next = NULL;
+	first = *s;
+	result = (*s)->next;
+	while ((*s)->next)
+		*s = (*s)->next;
+	(*s)->next = first;
+	*s = result;
+	first->next = NULL;
 }
 
-void    rotate_a(t_stack **a)
+void	ra(t_stack **a, t_count *f)
 {
-    rotate(a);
-    ft_printf("ra\n");
+	char	n;
+
+	rotate(a);
+	write(1, "ra\n", 3);
+	f->count = f->count + 1;
 }
 
-void   rotate_b(t_stack **b)
+void	rb(t_stack **b, t_count *f)
 {
-    rotate(b);
-    ft_printf("rb\n");
+	char	n;
+
+	rotate(b);
+	write(1, "rb\n", 3);
+	f->count = f->count + 1;
 }
 
-void    rotate_both(t_stack **a, t_stack **b)
+void	rr(t_stack **a, t_stack **b, t_count *f)
 {
-    rotate(a);
-    rotate(b);
-    ft_printf("rr\n");
+	char	n;
+
+	rotate(a);
+	rotate(b);
+	write(1, "rr\n", 3);
+	f->count = f->count + 1;
 }

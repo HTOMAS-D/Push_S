@@ -1,28 +1,65 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_three.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/01 17:23:07 by rade-sar          #+#    #+#             */
+/*   Updated: 2022/04/26 11:53:18 by rade-sar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
-void    sort_3_a(t_stack **a)
+void	sort_3_a(t_stack **a, t_count *f)
 {
-    t_stack *t;
-    t_stack *t2;
-    t_stack *t3;
+	t_stack	*x;
+	t_stack	*y;
+	t_stack	*z;
 
-    t = *a;
-    t2 = t->next;
-    t3 = t2->next;
-    while (is_sorted(a))
-    {
-        if((t3->nbr < t2->nbr && t3->nbr < t->nbr && t2->nbr < t->nbr) 
-            || (t3->nbr > t2->nbr && t3->nbr > t->nbr)
-            || (t->nbr < t2->nbr && t->nbr < t3->nbr))
-            swap_a(a);
-        else if(t->nbr > t2->nbr && t->nbr > t3->nbr 
-            && t2->nbr < t3->nbr)
-            rotate_a(a);
-        else if(t3->nbr < t2->nbr && t3->nbr < t->nbr)
-            revrotate_a(a);
-    }
+	if (!(*a))
+		return ;
+	z = *a;
+	y = z->next;
+	x = y->next;
+	while (!is_sorted(a))
+	{
+		if ((x->nbr > y->nbr && x->nbr > z->nbr)
+			|| (x->nbr < y->nbr && x->nbr < z->nbr && y->nbr < z->nbr)
+			|| (z->nbr < y->nbr && z->nbr < x->nbr))
+			sa(a, f);
+		else if (z->nbr > y->nbr
+			&& z->nbr > x->nbr
+			&& y->nbr < x->nbr)
+			ra(a, f);
+		else if (x->nbr < y->nbr && x->nbr < z->nbr)
+			rra(a, f);
+	}
 }
-void    sort_3_b(t_stack **b)
+
+void	sort_3_b(t_stack **b, t_count *f)
 {
-    
+	t_stack	*x;
+	t_stack	*y;
+	t_stack	*z;
+
+	if (!(*b))
+		return ;
+	z = *b;
+	y = z->next;
+	x = y->next;
+	while (!is_sorted(b))
+	{
+		if ((x->nbr > y->nbr && x->nbr > z->nbr)
+			|| (x->nbr < y->nbr && x->nbr < z->nbr && y->nbr < z->nbr)
+			|| (z->nbr < y->nbr && z->nbr < x->nbr))
+			sb(b, f);
+		else if (z->nbr > y->nbr
+			&& z->nbr > x->nbr
+			&& y->nbr < x->nbr)
+			rb(b, f);
+		else if (x->nbr < y->nbr && x->nbr < z->nbr)
+			rrb(b, f);
+	}
 }

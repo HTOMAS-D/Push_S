@@ -1,29 +1,50 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/04 15:50:59 by rade-sar          #+#    #+#             */
+/*   Updated: 2022/04/26 11:53:43 by rade-sar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
-void    swap(t_stack **stack)
+static void	swap(t_stack **s)
 {
-    int temp;
+	int		aux;
 
-    temp = (*stack)->nbr;
-    (*stack)->nbr = (*stack)->next->nbr;
-    (*stack)->next->nbr = temp;
+	aux = (*s)->nbr;
+	(*s)->nbr = (*s)->next->nbr;
+	(*s)->next->nbr = aux;
 }
 
-void    swap_a(t_stack **a)
+void	sa(t_stack **a, t_count *f)
 {
-    swap(a);
-    ft_printf("sa\n");
+	char	n;
+
+	swap(a);
+	write(1, "sa\n", 3);
+	f->count = f->count + 1;
 }
 
-void    swap_b(t_stack **b)
+void	sb(t_stack **b, t_count *f)
 {
-    swap(b);
-    ft_printf("sb\n");
+	char	n;
+
+	swap(b);
+	write(1, "sb\n", 3);
+	f->count = f->count + 1;
 }
 
-void    swap_both(t_stack **a, t_stack **b)
+void	ss(t_stack **a, t_stack **b, t_count *f)
 {
-    swap(a);
-    swap(b);
-    ft_printf("ss\n");
+	char	n;
+
+	swap(a);
+	swap(b);
+	write(1, "ss\n", 3);
+	f->count = f->count + 1;
 }

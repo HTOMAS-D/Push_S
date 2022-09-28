@@ -1,27 +1,45 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/04 15:50:04 by rade-sar          #+#    #+#             */
+/*   Updated: 2022/04/26 11:51:01 by rade-sar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
-static void    push(t_stack **a, t_stack **b)
+void	push(t_stack **a, t_stack **b)
 {
-    t_stack *temp;
-    t_stack *temp2;
-    
-    if(!b)
-        return ;
-    temp = (*b)->next;
-    temp2 = *b;
-    *b = temp;
-    temp2->next = *a;
-    *a = temp2;
+	t_stack	*aux_a;
+	t_stack	*aux_b;
+
+	if (!a)
+		return ;
+	aux_a = (*a)->next;
+	aux_b = *a;
+	*a = aux_a;
+	aux_b->next = *b;
+	*b = aux_b;
 }
 
-void    push_a(t_stack **a, t_stack **b)
+void	pa(t_stack **a, t_stack **b, t_count *f)
 {
-    push(a, b);
-    ft_printf("pa\n");
-} 
+	char	n;
 
-void    push_b(t_stack **a, t_stack **b)
+	push(b, a);
+	write(1, "pa\n", 3);
+	f->count = f->count + 1;
+}
+
+void	pb(t_stack **a, t_stack **b, t_count *f)
 {
-    push(b, a);
-    ft_printf("pb\n");
+	char	n;
+
+	push(a, b);
+	write(1, "pb\n", 3);
+	f->count = f->count + 1;
 }

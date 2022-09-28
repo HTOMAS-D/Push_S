@@ -1,37 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_hundreds.c                                    :+:      :+:    :+:   */
+/*   get_nbr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/01 17:22:22 by rade-sar          #+#    #+#             */
-/*   Updated: 2022/04/26 11:53:07 by rade-sar         ###   ########.fr       */
+/*   Created: 2022/03/04 15:12:29 by rade-sar          #+#    #+#             */
+/*   Updated: 2022/04/26 11:50:23 by rade-sar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	sort_more(t_stack **a, t_stack **b, int div, t_count *f)
+int	get_size(t_stack *s)
 {
-	int	v[2];
+	int	i;
 
-	v[0] = get_smallest(*a);
-	v[1] = get_biggest(*a) / div;
-	while (get_size(*a) && v[0] < get_biggest(*a))
+	i = 0;
+	while (s)
 	{
-		while (find_stack_range(*a, v[0], v[0] + v[1]))
-		{
-			put_range_top_a(a, b, v, f);
-			pb(a, b, f);
-		}
-		v[0] += v[1];
+		s = s->next;
+		i++;
 	}
-	while (get_size(*a))
-		pb(a, b, f);
-	while (get_size(*b))
+	return (i);
+}
+
+int	get_biggest(t_stack *s)
+{
+	int	i;
+
+	if (!s)
+		return (0);
+	i = s->nbr;
+	while (s->next)
 	{
-		put_top_b(a, b, get_biggest(*b), f);
-		pa(a, b, f);
+		s = s->next;
+		if (s->nbr > i)
+			i = s->nbr;
 	}
+	return (i);
+}
+
+int	get_smallest(t_stack *s)
+{
+	int	i;
+
+	i = s->nbr;
+	while (s)
+	{
+		s = s->next;
+		if (s && s->nbr < i)
+			i = s->nbr;
+	}
+	return (i);
 }

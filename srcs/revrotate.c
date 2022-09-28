@@ -1,38 +1,59 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rv_rotate.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/04 15:54:06 by rade-sar          #+#    #+#             */
+/*   Updated: 2022/04/26 11:51:34 by rade-sar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
-static void    revrotate (t_stack **stack)
+static void	rv_rotate(t_stack **s)
 {
-    t_stack *first;
-    t_stack *last;
-    t_stack *temp;
+	t_stack	*first;
+	t_stack	*last;
+	t_stack	*tmp;
 
-    first = *stack;
-    temp = *stack;
-    while (temp->next)
-        temp = temp->next;
-    last = temp;
-    *stack = last;
-    last->next = first;
-    while(temp -> next != last)
-        temp = temp->next;
-    temp->next = NULL;
+	first = *s;
+	tmp = *s;
+	while (tmp -> next)
+		tmp = tmp -> next;
+	last = tmp;
+	*s = last;
+	last -> next = first;
+	while (tmp -> next != last)
+		tmp = tmp -> next;
+	tmp->next = NULL;
 }
 
-void    revrotate_a(t_stack **a)
+void	rra(t_stack **a, t_count *f)
 {
-    revrotate(a);
-    ft_printf("rra\n");
+	char	n;
+
+	rv_rotate(a);
+	write(1, "rra\n", 4);
+	f->count = f->count + 1;
 }
 
-void    revrotate_b(t_stack **b)
+void	rrb(t_stack **b, t_count *f)
 {
-    revrotate(b);
-    ft_printf("rrb\n");
+	char	n;
+
+	rv_rotate(b);
+	write(1, "rrb\n", 4);
+	f->count = f->count + 1;
 }
 
-void    revrotate_both(t_stack **a, t_stack **b)
+void	rrr(t_stack **a, t_stack **b, t_count *f)
 {
-    revrotate(a);
-    revrotate(b);
-    ft_printf("rrr\n");
+	char	n;
+
+	rv_rotate(a);
+	rv_rotate(b);
+	write(1, "rrr\n", 4);
+	f->count = f->count + 1;
 }
