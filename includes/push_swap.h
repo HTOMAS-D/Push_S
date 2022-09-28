@@ -67,4 +67,6 @@ void	put_top_b(t_stack **a, t_stack **b, int nbr);
 //FIND.C
 int	find_bot_nbr(t_stack *s, int n, int med);
 
+//SORT_MORE.C
+void	sort_more(t_stack **a, t_stack **b);
 #endif
