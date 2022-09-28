@@ -63,10 +63,22 @@ int get_biggest(t_stack *a);
 //PUT_TOP.C
 void	put_top_a(t_stack **a, t_stack **b, int nbr);
 void	put_top_b(t_stack **a, t_stack **b, int nbr);
+void	put_range_top_a(t_stack **a, t_stack **b, int i[2]);
+static int	mv_a(t_stack **a, t_stack **b, char *str);
+static char *move_b(t_stack **b, int nbr);
 
 //FIND.C
 int	find_bot_nbr(t_stack *s, int n, int med);
+int	find_stack_range(t_stack *s, int start, int end);
+int	find_top_range(t_stack *s, int fst, int lst, int med);
 
 //SORT_MORE.C
-void	sort_more(t_stack **a, t_stack **b);
+void	sort_more(t_stack **a, t_stack **b, int div);
+
+//TRY_SORT.C
+void	try_sort(t_stack **a, t_stack **b);
+static int something_sorted(t_stack **a);
+static int something_sorted_top(t_stack **a, t_stack *s);
+static int top_bigger_than_bot(t_stack *bot, t_stack *top);
+static int top_smaller_than_bot(t_stack *bot, t_stack *top);
 #endif

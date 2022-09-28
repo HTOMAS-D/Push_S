@@ -8,11 +8,20 @@ void sort(int ac, t_stack **a, t_stack **b)
         sort_3_a(a);
     else if (ac <= 6)
         sort_5(a, b);
+    else if (ac <= 100)
+    {
+        sort_more(a, b, 3);
+    }
+    else if (ac <= 500)
+    {
+        sort_more(a, b, 11);
+    }
 }
 
 int is_sorted(t_stack **a)
 {
     t_stack *temp;
+
     temp = *a;
     while(temp)
     {

@@ -39,8 +39,8 @@ int	main(int ac, char **av)
 	b = NULL;
 	check_args(ac, av);
 	a = stack_a(ac, av, 1);
-	//if(is_sorted(a))
-	//	try_sort(a, b);
+	if(is_sorted(&a))
+		try_sort(&a, &b);
 	if(is_sorted(&a))
 		sort(ac - 1, &a, &b);
 	while(a)

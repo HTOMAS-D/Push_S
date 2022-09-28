@@ -41,5 +41,6 @@ void	ft_putexup(t_print *tab);
 char	**ft_split(const char *str, char separator);
 void	*ft_memcpy(void *dest, const void *src, size_t len);
 long long	ft_atoi(const char *str);
+int	ft_strcmp(const char *s1, const char *s2);
 
 #endif
