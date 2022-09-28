@@ -54,10 +54,10 @@ void   sort_2_b(t_stack **b, t_count *f);
 void	sort_3_a(t_stack **a, t_count *f);
 void	sort_3_b(t_stack **b, t_count *f);
 
-//SORT_5.C
+//SORT_5.C done
 void	sort_5(t_stack **a, t_stack **b, t_count *f);
 
-//GETS.C
+//GETS.C done
 int get_size(t_stack *a);
 int get_smallest(t_stack *a);
 int get_biggest(t_stack *a);

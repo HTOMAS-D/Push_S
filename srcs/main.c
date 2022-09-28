@@ -89,6 +89,7 @@ int	main(int ac, char **av)
 		ft_printf("%d\n", a->nbr);
 		a = a->next;
 	}
+	ft_printf("count: %d\n", f->count);
 	free_stack(&a);
 	free(f);
 	return (0);
