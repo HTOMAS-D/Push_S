@@ -52,4 +52,19 @@ void   sort_2_b(t_stack **b);
 void	sort_3_a(t_stack **a);
 void	sort_3_b(t_stack **b);
 
+//SORT_5.C
+void	sort_5(t_stack **a, t_stack **b);
+
+//GETS.C
+int get_size(t_stack *a);
+int get_smallest(t_stack *a);
+int get_biggest(t_stack *a);
+
+//PUT_TOP.C
+void	put_top_a(t_stack **a, t_stack **b, int nbr);
+void	put_top_b(t_stack **a, t_stack **b, int nbr);
+
+//FIND.C
+int	find_bot_nbr(t_stack *s, int n, int med);
+
 #endif
