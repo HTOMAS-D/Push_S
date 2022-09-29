@@ -72,12 +72,12 @@ int	main(int ac, char **av)
 		try_sort(&a, &b, f);
 	if (!is_sorted(&a))
 		sort(ac - 1, &a, &b, f);
-	while(a)
-	{
-		ft_printf("%d\n", a->nbr);
-		a = a->next;
-	}
-	ft_printf("count: %d\n", f->count);
+//	while(a)
+//	{
+//		ft_printf("%d\n", a->nbr);
+//		a = a->next;
+//	}
+//	ft_printf("count: %d\n", f->count);
 	free_stack(&a);
 	free(f);
 	return (0);
